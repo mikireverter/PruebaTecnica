@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&family=Open+Sans:wght@300&display=swap');
+
+ion-content{
+    font-family: 'Lato', sans-serif;
+    h1,p,input,ion-input,ion-button{
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+
+    }
+    h1{
+        font-weight: bold;
+    }
+    ion-button{
+        font-weight: bold;
+    }
+    .content{
+        background: url('/assets/img/background.jpg');
+        background-size: cover;
+        height:100%;
+    }
+    .logo{
+        width:100px;
+        height:90px;
+        margin: 3vh auto;
+        object-fit: cover;
+    }
+    ion-list{
+        text-align: center;
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 2em;
+        padding: 0;
+    }
+    .login-form ion-button{
+        width: 100%;
+        background: #2b90ff;
+        color: white;
+        border-radius: 0;
+        margin: 0;
+        }
+
+    ion-icon{
+        color:#ddd;
+    }
+    ion-toggle{
+        float: right;
+    }
+    .remember{
+        width:100%;
+    }
+   ion-input{
+    padding: 0 0.5em!important;
+   }
+   .sc-ion-input-ios-h {
+    --padding-top: 13px;
+   }
+ 
+    .login-form ion-toggle {
+        zoom: 0.8;
+      }
+
+       .errors p{
+        background: #e96767;
+        padding: 10px 5px;
+        border-radius: 25px;
+        color: white;
+        font-size: 0.8em;
+        font-weight:400;
+        text-align:center;
+      }
+       .errors p.success{
+        background: #5fc75f;
+
+      }
+
+      .login-form .container-inputs{
+          padding: 1em;
+      }
+       .errors{
+          padding:1em;
+          width:100%;
+      }
+
+    
+
+}
