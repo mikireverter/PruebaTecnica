@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Animation, AnimationController } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -7,64 +8,39 @@ import { Animation, AnimationController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-   email:string;
-   password:string;
-   show_errors:boolean=false;
-   no_valid_email:boolean=false;
-   no_valid_pass:boolean=false;
-   login_correcto:boolean=true;
-   no_valid_pass_length:boolean=false;
 
-  constructor(private animationCtrl: AnimationController) { 
+  ionicForm: FormGroup;
+  isSubmitted = false;
+
+  constructor(private animationCtrl: AnimationController,
+              public formBuilder: FormBuilder) {
+                
+               
     
   }
 
   ngOnInit() {
     this.animateList('.login-form',3000,1);
+    this.ionicForm = this.formBuilder.group({
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]]
+   })
   }
 
   logForm(){
+    this.isSubmitted = true;
+    if (!this.ionicForm.valid) {
+      console.log('Faltan valores requeridos')
+      return false;
+    } else {
+      console.log(this.ionicForm.value);
+      return true;
+    }
 
+  }
 
-
-
-    this.show_errors=false;
-    this.no_valid_email=false;
-    this.no_valid_pass=false;
-    this.login_correcto=false;
-    this.no_valid_pass_length=false; 
-
-
-
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if(!re.test(this.email)) {
-        // Invalid Email
-        this.show_errors=true;
-        this.no_valid_email=true;
-        console.log('no_valid_email');
-
-      }
-
-      if(!this.password){
-        this.show_errors=true;
-        this.no_valid_pass=true;
-        console.log('no_valid_pass');
-
-      }
-
-      if(this.password && this.password.length<5){
-        this.show_errors=true;
-        this.no_valid_pass_length=true;
-        console.log('no_valid_pass');
-
-      }
-
-      if(!this.no_valid_email && !this.no_valid_pass && !this.no_valid_pass_length){
-        this.show_errors=true;
-        this.login_correcto=true;
-       console.log('OK!');
-      }
-
+  get errorControl() {
+    return this.ionicForm.controls;
   }
 
   recordar(event){

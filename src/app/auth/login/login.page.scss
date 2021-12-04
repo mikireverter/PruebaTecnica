@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&family=Open+Sans:wght@300&display=swap');
 
-ion-content{
+ion-content.login{
     font-family: 'Lato', sans-serif;
     h1,p,input,ion-input,ion-button{
         font-family: 'Lato', sans-serif;
@@ -10,7 +10,7 @@ ion-content{
     h1{
         font-weight: bold;
     }
-    ion-button{
+    .login-form  ion-button{
         font-weight: bold;
     }
     .content{
@@ -24,7 +24,7 @@ ion-content{
         margin: 3vh auto;
         object-fit: cover;
     }
-    ion-list{
+    .login-form ion-list{
         text-align: center;
         max-width: 90%;
         margin: 0 auto;
@@ -39,16 +39,16 @@ ion-content{
         margin: 0;
         }
 
-    ion-icon{
+        .login-form ion-icon{
         color:#ddd;
     }
-    ion-toggle{
+    .login-form ion-toggle{
         float: right;
     }
     .remember{
         width:100%;
     }
-   ion-input{
+    .login-form ion-input{
     padding: 0 0.5em!important;
    }
    .sc-ion-input-ios-h {
@@ -59,7 +59,7 @@ ion-content{
         zoom: 0.8;
       }
 
-       .errors p{
+        span.error{
         background: #e96767;
         padding: 10px 5px;
         border-radius: 25px;
@@ -67,13 +67,14 @@ ion-content{
         font-size: 0.8em;
         font-weight:400;
         text-align:center;
+        width: 90%;
+        margin: 0.8em auto;
       }
-       .errors p.success{
+       span.success{
         background: #5fc75f;
-
       }
 
-      .login-form .container-inputs{
+      .container-inputs{
           padding: 1em;
       }
        .errors{
