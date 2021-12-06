@@ -11,7 +11,7 @@ export class LoginPage implements OnInit {
 
   ionicForm: FormGroup;
   isSubmitted = false;
-
+  msg:string='';
   constructor(private animationCtrl: AnimationController,
               public formBuilder: FormBuilder) {
                 
@@ -69,6 +69,25 @@ export class LoginPage implements OnInit {
     animationArray.forEach((animation: Animation) => {
       animation.play();
     });
+  }
+
+  validateErrors(){
+    if(this.isSubmitted && this.errorControl.email.errors?.pattern){
+      this.msg='*Debes introducir un email con un formato válido';
+      return true;
+    }
+    if(this.isSubmitted && this.errorControl.email.errors?.required){
+      this.msg='*El campo email es requerido';
+      return true;
+    }
+    if(this.isSubmitted && this.errorControl.password.errors?.required){
+      this.msg='*El campo contraseña es requerido';
+      return true;
+    }
+    if(this.isSubmitted && this.errorControl.password.errors?.minlength){
+      this.msg='*La contraseña debe tener 5 carácteres como mínimo';
+      return true;
+    }
   }
 
 }

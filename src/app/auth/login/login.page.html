@@ -16,12 +16,12 @@
                   <div class="container-inputs">
                     <ion-item class="ion-no-padding">
                         <ion-icon name="person-outline"></ion-icon>
-                        <ion-input  formControlName="email" type="email" required placeholder="Email" [(ngModel)]="email" value=""    ></ion-input>
+                        <ion-input  formControlName="email" type="email" required placeholder="Email" ></ion-input>
                     </ion-item>
                     <br /> 
                     <ion-item class="ion-no-padding">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <ion-input  formControlName="password" type="password" required placeholder="Contraseña"  [(ngModel)]="password" value=""    ></ion-input>
+                        <ion-input  formControlName="password" type="password" required placeholder="Contraseña"></ion-input>
                     </ion-item>
                     <ion-row>
                       <p class="ion-text-start remember">Recordar <ion-toggle color="primary" (ionChange)="recordar($event)"></ion-toggle></p>
@@ -37,10 +37,7 @@
           </ion-col>
       </ion-row>
       <ion-row>
-        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">*Debes introducir un email con un formato válido</span>
-          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required"> *El campo email es requerido</span> 
-          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required"> *El campo contraseña es requerido</span> 
-          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.minlength"> *La contraseña debe tener 5 carácteres como mínimo</span> 
+          <span class="error ion-padding" *ngIf="validateErrors()" >{{msg}}</span>
           <span class="error ion-padding success" *ngIf="ionicForm.valid"> ¡Credenciales correctas!</span> 
 
       </ion-row>
